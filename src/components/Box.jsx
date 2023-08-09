@@ -4,18 +4,23 @@ import { getRPColorFromName } from '../features/color';
 
 function Box(props) {
   const handleRef = useRef(null);
-  const { size, position, color } = getBoxData(props.box, [
+  const rotateRef = useRef(null);
+  const { size, position, color, rotate } = getBoxData(props.box, [
     'size',
     'position',
     'color',
+    'rotate',
   ]);
 
   return (
     <div
-      className="absolute flex items-end justify-end rounded top-0 left-0 border border-base"
+      className="absolute  rounded"
       onDoubleClick={props.onDblClick}
       onPointerDown={(event) => {
-        if (event.target !== handleRef.current) {
+        if (
+          event.target !== handleRef.current &&
+          event.target !== rotateRef.current
+        ) {
           props.onPointerDown(event, 'move');
         }
       }}
@@ -29,12 +34,24 @@ function Box(props) {
         backgroundColor: getRPColorFromName(color),
         width: `${size.width}px`,
         height: `${size.height}px`,
-        transform: `translate(${position.left}px, ${position.top}px)`,
+        top: `${position.top}px`,
+        left: `${position.left}px`,
+        transform: `rotate(${rotate.rotation}deg)`,
       }}
     >
       <div
+        ref={rotateRef}
+        className="absolute h-4 w-4 rounded-full border-white-800 border-2 top-0 left-[50%] -translate-x-1/2   mt-1"
+        style={{
+          cursor: props.dragState === 'none' ? undefined : 'pointer',
+        }}
+        onPointerDown={(event) => {
+          props.onPointerDown(event, 'rotate');
+        }}
+      ></div>
+      <div
         ref={handleRef}
-        className="h-3 w-3 rounded-br border-r-2 border-b-2 border-base mb-1 mr-1"
+        className=" absolute h-3 w-3 rounded-br border-r-2 border-b-2 border-base mb-1 mr-1 right-0 bottom-0"
         style={{
           cursor: props.dragState === 'none' ? undefined : 'se-resize',
         }}

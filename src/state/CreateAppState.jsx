@@ -3,6 +3,7 @@ import CreateAwarenessUsers from './CreateAwarenesUsers';
 import { CreateSyncArray } from '../features/sync';
 import { Map as YMap } from 'yjs';
 import { getRandomRPColorName } from '../features/color';
+import helperResize from './helperResize';
 
 export default function CreateAppState(networkProvider, doc) {
   const [draggingBoxPosition, setDraggingBoxPosition] = useState(null);
@@ -45,11 +46,39 @@ export default function CreateAppState(networkProvider, doc) {
           top: boxPosition.top + newPosition.top - position.top,
           left: boxPosition.left + newPosition.left - position.left,
         });
-      } else {
-        const boxSize = box.get('size');
-        box.set('size', {
-          height: Math.max(50, boxSize.height + newPosition.top - position.top),
-          width: Math.max(50, boxSize.width + newPosition.left - position.left),
+      } else if (type === 'resize') {
+        helperResize(box, newPosition, position);
+        // const boxSize = box.get('size');
+        // const boxPosition = box.get('position');
+
+        // box.set('size', {
+        //   height: Math.max(
+        //     50,
+        //     boxSize.height - (newPosition.top - position.top)
+        //   ),
+        //   width: Math.max(
+        //     50,
+        //     boxSize.width - (newPosition.left - position.left)
+        //   ),
+        // });
+        // if (boxSize.width === 50 && boxSize.height === 50) {
+        //   console.log(boxSize);
+        //   return;
+        // }
+        // box.set('position', {
+        //   top:
+        //     boxSize.height === 50
+        //       ? boxPosition.top
+        //       : boxPosition.top + (newPosition.top - position.top),
+        //   left:
+        //     boxSize.width === 50
+        //       ? boxPosition.left
+        //       : boxPosition.left + (newPosition.left - position.left),
+        // });
+      } else if (type === 'rotate') {
+        const boxRotate = box.get('rotate');
+        box.set('rotate', {
+          rotation: boxRotate.rotation + (newPosition.left - position.left),
         });
       }
 
@@ -66,6 +95,7 @@ export default function CreateAppState(networkProvider, doc) {
           ['position', position],
           ['size', { width: 100, height: 100 }],
           ['color', getRandomRPColorName()],
+          ['rotate', { rotation: 0 }],
         ]),
       ]);
     },
