@@ -48,33 +48,6 @@ export default function CreateAppState(networkProvider, doc) {
         });
       } else if (type === 'resize') {
         helperResize(box, newPosition, position);
-        // const boxSize = box.get('size');
-        // const boxPosition = box.get('position');
-
-        // box.set('size', {
-        //   height: Math.max(
-        //     50,
-        //     boxSize.height - (newPosition.top - position.top)
-        //   ),
-        //   width: Math.max(
-        //     50,
-        //     boxSize.width - (newPosition.left - position.left)
-        //   ),
-        // });
-        // if (boxSize.width === 50 && boxSize.height === 50) {
-        //   console.log(boxSize);
-        //   return;
-        // }
-        // box.set('position', {
-        //   top:
-        //     boxSize.height === 50
-        //       ? boxPosition.top
-        //       : boxPosition.top + (newPosition.top - position.top),
-        //   left:
-        //     boxSize.width === 50
-        //       ? boxPosition.left
-        //       : boxPosition.left + (newPosition.left - position.left),
-        // });
       } else if (type === 'rotate') {
         const boxRotate = box.get('rotate');
         box.set('rotate', {
