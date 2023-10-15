@@ -1,6 +1,6 @@
-# Cooperative React Playground App
+# CollaboraBox
 
-Welcome to the Cooperative React Playground App, a collaborative web application built using React, Yjs, and styled with Tailwind CSS.
+Welcome to the CollaboraBox, a collaborative web application built using React, Yjs, and styled with Tailwind CSS.
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -12,7 +12,7 @@ Welcome to the Cooperative React Playground App, a collaborative web application
 
 ## Introduction
 
-The Cooperative React Playground App is designed to provide a collaborative platform where users can create and manipulate boxes in a virtual playground. It leverages Yjs for real-time collaboration and synchronization.
+The CollaboraBox is designed to provide a collaborative platform where users can create and manipulate boxes in a virtual playground. It leverages Yjs for real-time collaboration and synchronization.
 
 ## Features
 
