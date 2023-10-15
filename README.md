@@ -35,11 +35,11 @@ Move boxes by dragging them, and resize by dragging the corners.
 
 Collaborate with others in real-time by sharing the app link.
 
-Collaboration with Yjs
+## Collaboration with Yjs
 
 The app uses Yjs to enable real-time collaboration. Yjs is a powerful framework that allows multiple users to work on the same document simultaneously. Any changes made by one user are immediately reflected in the documents of others, providing a seamless collaborative experience.
 
-Styling with Tailwind CSS
+## Styling with Tailwind CSS
 
 Tailwind CSS is used to style the app. It provides a utility-first approach to CSS, allowing for rapid styling and customization. The app has been designed to be visually appealing and responsive on various screen sizes.
 
